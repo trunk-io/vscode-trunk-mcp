@@ -1,0 +1,110 @@
+{
+  "name": "mcp",
+  "displayName": "Trunk Flaky Tests",
+  "description": "Detect flaky tests, get root cause analysis, and fix suggestions — powered by Trunk's MCP server.",
+  "version": "0.1.0",
+  "publisher": "trunk",
+  "license": "MIT",
+  "icon": "assets/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trunk-io/vscode-trunk-mcp"
+  },
+  "homepage": "https://docs.trunk.io/flaky-tests/use-mcp-server",
+  "bugs": {
+    "url": "https://github.com/trunk-io/vscode-trunk-mcp/issues"
+  },
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Testing",
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "mcp",
+    "flaky-tests",
+    "testing",
+    "ci",
+    "trunk",
+    "model-context-protocol"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "mcpServerDefinitionProviders": [
+      {
+        "id": "trunk-mcp",
+        "label": "Trunk Flaky Tests"
+      }
+    ],
+    "commands": [
+      {
+        "command": "trunk.mcp.connect",
+        "title": "Connect to Trunk Flaky Tests",
+        "category": "Trunk"
+      },
+      {
+        "command": "trunk.mcp.openDocs",
+        "title": "Open Trunk MCP Documentation",
+        "category": "Trunk"
+      }
+    ],
+    "walkthroughs": [
+      {
+        "id": "trunk-mcp-getting-started",
+        "title": "Get Started with Trunk Flaky Tests",
+        "description": "Detect flaky tests, understand root causes, and get fix suggestions right in your editor.",
+        "steps": [
+          {
+            "id": "connect",
+            "title": "Connect to Trunk",
+            "description": "Sign in to your Trunk account to connect the MCP server to your workspace.\n\n[Connect to Trunk](command:trunk.mcp.connect)",
+            "media": {
+              "markdown": "assets/walkthrough/connect.md"
+            }
+          },
+          {
+            "id": "try-fix-flaky-test",
+            "title": "Fix a Flaky Test",
+            "description": "Ask Copilot to fix a flaky test using Trunk. Try it in chat:\n\n`@trunk fix my flaky tests`\n\nOr use the tool directly — Copilot will call `fix-flaky-test` when you ask about test failures.",
+            "media": {
+              "markdown": "assets/walkthrough/fix-flaky-test.md"
+            }
+          },
+          {
+            "id": "setup-uploads",
+            "title": "Set Up CI Uploads",
+            "description": "Configure your CI pipeline to upload test results to Trunk for flaky test detection.\n\n[Set Up Uploads](command:trunk.mcp.connect)",
+            "media": {
+              "markdown": "assets/walkthrough/setup-uploads.md"
+            }
+          },
+          {
+            "id": "learn-more",
+            "title": "Learn More",
+            "description": "Read the full documentation for Trunk's MCP server.\n\n[Open Documentation](command:trunk.mcp.openDocs)",
+            "media": {
+              "markdown": "assets/walkthrough/learn-more.md"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "watch": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --watch",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.99.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0"
+  }
+}
