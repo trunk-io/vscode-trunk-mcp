@@ -8,17 +8,20 @@ export function activate(context: vscode.ExtensionContext) {
   const didChangeEmitter = new vscode.EventEmitter<void>()
 
   // Register the MCP server definition provider
+  if (!vscode.lm?.registerMcpServerDefinitionProvider) {
+    return
+  }
+
   context.subscriptions.push(
     vscode.lm.registerMcpServerDefinitionProvider('trunk-mcp', {
       onDidChangeMcpServerDefinitions: didChangeEmitter.event,
 
       provideMcpServerDefinitions: async () => {
         return [
-          new vscode.McpHttpServerDefinition({
-            label: 'Trunk Flaky Tests',
-            uri: MCP_SERVER_URL,
-            version: '0.1.0',
-          }),
+          new vscode.McpHttpServerDefinition(
+            'Trunk Flaky Tests',
+            vscode.Uri.parse(MCP_SERVER_URL),
+          ),
         ]
       },
 
@@ -31,12 +34,23 @@ export function activate(context: vscode.ExtensionContext) {
   // Register commands
   context.subscriptions.push(
     vscode.commands.registerCommand('trunk.mcp.connect', async () => {
-      // Trigger the MCP server connection — VS Code handles OAuth
-      await vscode.commands.executeCommand(
-        'github.copilot.chat.mcp.startServer',
-        'trunk-mcp',
-        'Trunk Flaky Tests'
-      )
+      // Open Copilot Chat — the MCP server connects automatically when Copilot needs it
+      const availableCommands = await vscode.commands.getCommands(true)
+
+      if (availableCommands.includes('workbench.panel.chat.view.copilot.focus')) {
+        await vscode.commands.executeCommand('workbench.panel.chat.view.copilot.focus')
+        vscode.window.showInformationMessage(
+          'Trunk Flaky Tests is available in Copilot Chat. Try asking: "fix my flaky tests"'
+        )
+      } else {
+        const action = await vscode.window.showInformationMessage(
+          'Trunk Flaky Tests requires GitHub Copilot. Install and sign in to Copilot, then the MCP server will be available automatically.',
+          'Open Docs'
+        )
+        if (action === 'Open Docs') {
+          await vscode.commands.executeCommand('trunk.mcp.openDocs')
+        }
+      }
     })
   )
 

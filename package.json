@@ -15,7 +15,7 @@
     "url": "https://github.com/trunk-io/vscode-trunk-mcp/issues"
   },
   "engines": {
-    "vscode": "^1.99.0"
+    "vscode": "^1.101.0"
   },
   "categories": [
     "Testing",
@@ -103,7 +103,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "@types/vscode": "^1.99.0",
+    "@types/vscode": "^1.101.0",
     "esbuild": "^0.25.0",
     "typescript": "^5.7.0"
   }
