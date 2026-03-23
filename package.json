@@ -1,7 +1,7 @@
 {
   "name": "mcp",
-  "displayName": "Trunk Flaky Tests",
-  "description": "Detect flaky tests, get root cause analysis, and fix suggestions — powered by Trunk's MCP server.",
+  "displayName": "Trunk MCP Server",
+  "description": "Trunk's MCP server to get flaky tests insights, root causes, and fix suggestions.",
   "version": "0.1.0",
   "publisher": "trunk",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/trunk-io/vscode-trunk-mcp"
   },
-  "homepage": "https://docs.trunk.io/flaky-tests/use-mcp-server",
+  "homepage": "https://docs.trunk.io/",
   "bugs": {
     "url": "https://github.com/trunk-io/vscode-trunk-mcp/issues"
   },
@@ -24,11 +24,19 @@
   ],
   "keywords": [
     "mcp",
+    "model-context-protocol",
     "flaky-tests",
+    "flaky",
     "testing",
+    "test-failures",
+    "test-analytics",
     "ci",
+    "ci-cd",
     "trunk",
-    "model-context-protocol"
+    "copilot",
+    "github-copilot",
+    "devtools",
+    "code-quality"
   ],
   "activationEvents": [
     "onStartupFinished"
@@ -38,13 +46,13 @@
     "mcpServerDefinitionProviders": [
       {
         "id": "trunk-mcp",
-        "label": "Trunk Flaky Tests"
+        "label": "Trunk"
       }
     ],
     "commands": [
       {
         "command": "trunk.mcp.connect",
-        "title": "Connect to Trunk Flaky Tests",
+        "title": "Connect to Trunk",
         "category": "Trunk"
       },
       {
@@ -56,8 +64,8 @@
     "walkthroughs": [
       {
         "id": "trunk-mcp-getting-started",
-        "title": "Get Started with Trunk Flaky Tests",
-        "description": "Detect flaky tests, understand root causes, and get fix suggestions right in your editor.",
+        "title": "Get Started with Trunk's MCP Server",
+        "description": "Get flaky tests insights, root causes, and fix suggestions right in your editor.",
         "steps": [
           {
             "id": "connect",
@@ -73,14 +81,6 @@
             "description": "Ask Copilot to fix a flaky test using Trunk. Try it in chat:\n\n`@trunk fix my flaky tests`\n\nOr use the tool directly — Copilot will call `fix-flaky-test` when you ask about test failures.",
             "media": {
               "markdown": "assets/walkthrough/fix-flaky-test.md"
-            }
-          },
-          {
-            "id": "setup-uploads",
-            "title": "Set Up CI Uploads",
-            "description": "Configure your CI pipeline to upload test results to Trunk for flaky test detection.\n\n[Set Up Uploads](command:trunk.mcp.connect)",
-            "media": {
-              "markdown": "assets/walkthrough/setup-uploads.md"
             }
           },
           {

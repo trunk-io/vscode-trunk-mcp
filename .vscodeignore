@@ -2,8 +2,13 @@
 .vscode-test/**
 .trunk/**
 .git/**
+.claude/**
+.DS_Store
 src/**
 node_modules/**
+docs/**
 tsconfig.json
 .gitignore
 *.vsix
+EXTENSION_COPY.md
+assets/walkthrough/setup-uploads.md

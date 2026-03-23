@@ -1,33 +1,40 @@
-<!-- mcp-name: Trunk Flaky Tests -->
+<!-- mcp-name: Trunk MCP Server -->
 
-# Trunk Flaky Tests — VS Code Extension
+# Trunk MCP Server
 
-Detect flaky tests, get root cause analysis, and fix suggestions right in your editor.
+This extension connects [Trunk](https://trunk.io) to GitHub Copilot through VS Code's MCP support. Once installed, Copilot can pull flaky test data from Trunk and suggest fixes directly in chat.
 
-This extension registers the [Trunk](https://trunk.io) MCP server with VS Code, giving GitHub Copilot access to flaky test detection and fix tools.
+## What You Get
 
-## What It Does
+The extension registers Trunk's MCP server with VS Code. Copilot picks it up automatically and gains access to the `fix-flaky-test` tool, which can:
 
-| Tool | Description |
-|------|-------------|
-| `fix-flaky-test` | Analyze a flaky test, identify the root cause, and suggest a fix |
-| `setup-trunk-uploads` | Configure your CI pipeline to upload test results to Trunk |
+- Identify flaky tests in your repo
+- Explain why a test is flaking (root cause analysis)
+- Suggest code changes to fix it
+- Show historical failure patterns
+
+No configuration files to edit. No API keys to manage. The MCP server handles auth via OAuth when Copilot first connects.
 
 ## Getting Started
 
 1. Install this extension
-2. Click **Connect to Trunk** when prompted (or run `Trunk: Connect to Trunk Flaky Tests` from the command palette)
-3. Sign in to your Trunk account
-4. Ask Copilot about your flaky tests
+2. Open Copilot Chat and ask something like `fix my flaky tests`
+3. Trunk will prompt you to sign in the first time (OAuth via browser)
+4. That's it. Copilot now has access to your Trunk data.
+
+You can also run `Trunk: Connect to Trunk` from the command palette to kick off the connection manually.
 
 ## Requirements
 
 - VS Code 1.99+
-- GitHub Copilot extension
-- A [Trunk](https://trunk.io) account with test uploads configured
+- [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) extension
+- A [Trunk](https://trunk.io) account with CI test uploads configured
+
+If you haven't set up test uploads yet, check the [Trunk docs](https://docs.trunk.io/) to get your CI pipeline reporting test results.
 
 ## Links
 
-- [Documentation](https://docs.trunk.io/flaky-tests/use-mcp-server)
+- [Trunk Documentation](https://docs.trunk.io/)
 - [Trunk Website](https://trunk.io)
 - [Source Code](https://github.com/trunk-io/vscode-trunk-mcp)
+- [Report an Issue](https://github.com/trunk-io/vscode-trunk-mcp/issues)

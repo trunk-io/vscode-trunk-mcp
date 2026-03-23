@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 
 const MCP_SERVER_URL = 'https://mcp.trunk.io/mcp'
-const DOCS_URL = 'https://docs.trunk.io/flaky-tests/use-mcp-server'
+const DOCS_URL = 'https://docs.trunk.io/'
 const FIRST_RUN_KEY = 'trunk.mcp.firstRunComplete'
 
 export function activate(context: vscode.ExtensionContext) {
@@ -19,7 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
       provideMcpServerDefinitions: async () => {
         return [
           new vscode.McpHttpServerDefinition(
-            'Trunk Flaky Tests',
+            'Trunk MCP Server',
             vscode.Uri.parse(MCP_SERVER_URL),
           ),
         ]
@@ -40,11 +40,11 @@ export function activate(context: vscode.ExtensionContext) {
       if (availableCommands.includes('workbench.panel.chat.view.copilot.focus')) {
         await vscode.commands.executeCommand('workbench.panel.chat.view.copilot.focus')
         vscode.window.showInformationMessage(
-          'Trunk Flaky Tests is available in Copilot Chat. Try asking: "fix my flaky tests"'
+          'Trunk MCP Server is available in Copilot Chat. Try asking: "fix my flaky tests"'
         )
       } else {
         const action = await vscode.window.showInformationMessage(
-          'Trunk Flaky Tests requires GitHub Copilot. Install and sign in to Copilot, then the MCP server will be available automatically.',
+          'Trunk MCP Server requires GitHub Copilot. Install and sign in to Copilot, then the MCP server will be available automatically.',
           'Open Docs'
         )
         if (action === 'Open Docs') {
@@ -69,7 +69,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 async function showWelcome(context: vscode.ExtensionContext) {
   const action = await vscode.window.showInformationMessage(
-    'Trunk Flaky Tests is ready! Connect your account to detect flaky tests and get fix suggestions.',
+    'Trunk MCP Server is ready! Connect your account to detect flaky tests and get fix suggestions.',
     'Get Started',
     'Open Docs',
     'Dismiss'

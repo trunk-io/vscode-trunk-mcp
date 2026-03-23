@@ -5,7 +5,7 @@
 A VS Code extension that registers the Trunk MCP server (`https://mcp.trunk.io/mcp`) with GitHub Copilot. The extension is fully functional and tested locally — MCP server registration, OAuth flow, tool discovery, and onboarding UX all confirmed working.
 
 - **Marketplace ID:** `Trunk.mcp`
-- **Display name:** Trunk Flaky Tests
+- **Display name:** Trunk MCP Server
 - **Repo:** https://github.com/trunk-io/vscode-trunk-mcp
 
 This will sit alongside the existing [Trunk Code Quality](https://marketplace.visualstudio.com/items?itemName=Trunk.io) extension (`Trunk.io`, 209k installs) under the same publisher account.
